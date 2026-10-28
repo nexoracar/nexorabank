@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071326">
+<title>Nexora Finance</title>
+<style>
+:root{--bg:#06101f;--panel:#0c1b30;--panel2:#102540;--line:#1b3a5d;--blue:#1677ff;--cyan:#35c7ff;--text:#f4f8ff;--muted:#91a7c2;--green:#23d6a0;--yellow:#ffbf5f;--red:#ff6f83}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#10294b 0,#06101f 48%,#040b16 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}
+.wrap{max-width:480px;margin:auto;min-height:100vh;padding:18px 16px 92px}
+.top{display:flex;align-items:center;justify-content:space-between;margin:4px 0 26px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.2px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#075dff,#25c7ff);display:grid;place-items:center;font-size:24px;font-weight:900;box-shadow:0 8px 26px #0877ff40}
+.pill{border:1px solid #25466b;color:#b8d8ff;background:#0b1c31;border-radius:99px;padding:8px 11px;font-size:11px}
+h1{font-size:29px;line-height:1.15;margin:8px 0 10px;letter-spacing:-.7px}h2{font-size:20px;margin:0 0 8px}h3{font-size:15px;margin:0 0 7px}.muted{color:var(--muted);font-size:13px;line-height:1.5}.eyebrow{color:#5bbdff;text-transform:uppercase;letter-spacing:1.7px;font-size:10px;font-weight:800}
+.card{background:linear-gradient(145deg,#102642,#0a192d);border:1px solid var(--line);border-radius:21px;padding:17px;margin:14px 0;box-shadow:0 12px 32px #0002}
+.hero{padding:23px 20px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:#0877ff24;right:-80px;top:-70px;filter:blur(2px)}
+.hero>*{position:relative;z-index:1}.hero h1 span{color:#52baff}.primary{width:100%;padding:14px 16px;border-radius:14px;color:white;font-weight:750;background:linear-gradient(100deg,#0968ff,#168cff);box-shadow:0 8px 22px #086fff38;margin-top:10px}.secondary{width:100%;padding:12px 14px;border:1px solid #2b527b;border-radius:13px;background:#0a1a2d;color:#d9eaff;font-weight:650;margin-top:9px}.ghost{background:transparent;color:#8ecaff;padding:10px;border:0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{padding:14px;border:1px solid #1d3d61;background:#0b1b2f;border-radius:16px}.stat .icon{font-size:20px;margin-bottom:10px}.stat strong{display:block;font-size:17px;margin:4px 0}.stat span{font-size:11px;color:var(--muted)}
+.field{margin:13px 0}.field label{display:block;font-size:12px;color:#b8cce2;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;padding:13px 13px;background:#071629;border:1px solid #244667;border-radius:12px;color:#f4f8ff;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:#2997ff;box-shadow:0 0 0 3px #168cff20}.field textarea{min-height:95px;resize:vertical}.field input::placeholder,.field textarea::placeholder{color:#617995}
+.hidden{display:none!important}.notice{font-size:12px;color:#9db6d0;line-height:1.5;padding:12px;border-radius:12px;background:#07182a;border:1px solid #1a3857;margin:12px 0}.status{display:inline-block;border-radius:99px;padding:5px 9px;font-size:10px;font-weight:800}.pending{color:#ffce7c;background:#62431d55}.approved{color:#54e4b6;background:#0b604c55}.rejected{color:#ff92a0;background:#69283a55}
+.item{display:flex;gap:11px;align-items:flex-start;padding:13px 0;border-bottom:1px solid #1b3552}.item:last-child{border-bottom:0}.itemicon{width:39px;height:39px;border-radius:13px;background:#12365b;display:grid;place-items:center;flex-shrink:0}.itembody{flex:1;min-width:0}.itembody strong{font-size:13px;display:block;margin:2px 0 5px}.itembody small{font-size:11px;color:var(--muted)}.amount{font-weight:800;font-size:14px;white-space:nowrap}
+.steps{display:flex;gap:6px;margin:20px 0}.step{height:4px;border-radius:8px;flex:1;background:#193451}.step.active{background:linear-gradient(90deg,#0874ff,#37c6ff)}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:10;background:#06101ff0;backdrop-filter:blur(18px);border-top:1px solid #18324d;padding:9px max(12px,env(safe-area-inset-left)) calc(9px + env(safe-area-inset-bottom));display:flex;justify-content:center}.nav{width:min(480px,100%);display:flex;justify-content:space-around}.nav button{color:#7993b0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;min-width:60px}.nav button b{font-size:19px;font-weight:500}.nav button.active{color:#58baff}
+.back{background:transparent;color:#c8dcf2;font-size:13px;padding:7px 0 13px}.divider{height:1px;background:#1b3552;margin:15px 0}.small{font-size:11px;color:var(--muted)}.center{text-align:center}.codeboxes{display:flex;gap:8px;justify-content:center;margin:22px 0}.codeboxes input{width:43px;height:51px;text-align:center;font-size:20px;font-weight:800;background:#071629;color:white;border:1px solid #2a4e73;border-radius:12px}
+.toast{position:fixed;left:16px;right:16px;bottom:90px;max-width:440px;margin:auto;padding:13px 15px;border-radius:13px;background:#173754;border:1px solid #39709b;color:white;font-size:13px;z-index:20;box-shadow:0 10px 35px #0007}
+.loan-choice{border:1px solid #2b527b;border-radius:13px;padding:13px;text-align:center;background:#08192c;color:#dbeeff;font-weight:700}.loan-choice.selected{border-color:#2695ff;background:#0d3560}
+@media(min-width:600px){body{padding:18px 0}.wrap{border:1px solid #142a43;border-radius:28px;min-height:calc(100vh - 36px);box-shadow:0 20px 80px #0005}.bottom{background:#06101ff5}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><div class="logo">N</div><div>Nexora <span style="color:#5bbdff">Finance</span><div class="small" style="font-weight:500">Shaxsiy moliya platformasi</div></div></div>
+    <div class="pill">● DEMO</div>
+  </header>
+
+  <main id="welcome">
+    <section class="card hero">
+      <div class="eyebrow">Moliyaviy xizmatlar</div>
+      <h1>Rejalaringiz sari<br><span>ishonchli qadam.</span></h1>
+      <p class="muted">Arizalaringizni boshqaring, holatini kuzating va moliyaviy ma’lumotlaringizni bir joyda ko‘ring.</p>
+      <button class="primary" onclick="show('register')">Akkaunt yaratish →</button>
+      <button class="secondary" onclick="show('login')">Akkauntim bor</button>
+    </section>
+    <div class="grid">
+      <div class="stat"><div class="icon">🔐</div><strong>Xavfsiz</strong><span>Himoyalangan kirish</span></div>
+      <div class="stat"><div class="icon">📋</div><strong>Shaffof</strong><span>Ariza holati aniq</span></div>
+      <div class="stat"><div class="icon">👤</div><strong>Shaxsiy</strong><span>O‘z kabinetingiz</span></div>
+      <div class="stat"><div class="icon">🔔</div><strong>Bildirishnoma</strong><span>Holat yangilanishlari</span></div>
+    </div>
+    <div class="notice">Bu — ko‘rinish va jarayonlarni sinash uchun demo. Hozircha haqiqiy pul, pasport ma’lumotlari yoki to‘lovlar qabul qilinmaydi.</div>
+  </main>
+
+  <main id="register" class="hidden">
+    <button class="back" onclick="show('welcome')">← Orqaga</button><div class="eyebrow">1 / 2 · Ro‘yxatdan o‘tish</div><h1>Akkaunt yarating</h1><p class="muted">Ma’lumotlaringizni kiriting. Haqiqiy shaxsiy hujjat ma’lumotlarini demo sahifaga yozmang.</p>
+    <div class="steps"><div class="step active"></div><div class="step"></div></div>
+    <form id="regForm">
+      <div class="field"><label>Ism</label><input required placeholder="Ismingiz" autocomplete="given-name"></div>
+      <div class="field"><label>Familiya</label><input required placeholder="Familiyangiz" autocomplete="family-name"></div>
+      <div class="field"><label>Telefon raqami</label><input required type="tel" placeholder="+998 90 123 45 67" pattern=".{9,}" autocomplete="tel"></div>
+      <div class="field"><label>Elektron pochta</label><input required type="email" placeholder="name@example.com" autocomplete="email"></div>
+      <div class="field"><label>Parol</label><input required type="password" minlength="8" placeholder="Kamida 8 ta belgi" autocomplete="new-password"></div>
+      <div class="notice">Parolni boshqa joyda ishlatgan parolingiz bilan bir xil qilmang. Demo versiyada ma’lumotlar serverga yuborilmaydi.</div>
+      <button class="primary" type="submit">Davom etish →</button>
+    </form>
+  </main>
+
+  <main id="verify" class="hidden">
+    <button class="back" onclick="show('register')">← Orqaga</button><div class="eyebrow">2 / 2 · Tasdiqlash</div><h1>Kodni tasdiqlang</h1>
+    <p class="muted">Haqiqiy tizimda bir martalik kod Nexora Finance botiga yuboriladi. Bu prototipda kod yuborish simulyatsiya qilinadi.</p>
+    <div class="card center"><div style="font-size:38px">🤖</div><h3>Nexora Finance Bot</h3><p class="muted">Bot orqali tasdiqlash funksiyasi backend ulangandan keyin ishlaydi.</p><button class="secondary" onclick="toast('Demo: botga ulanish keyingi bosqichda sozlanadi.')">Botni ulash (demo)</button></div>
+    <div class="field"><label>6 xonali tasdiqlash kodi (demo)</label><input id="demoCode" inputmode="numeric" maxlength="6" placeholder="Masalan: 123456"></div>
+    <button class="primary" onclick="verifyDemo()">Tasdiqlash</button>
+    <p class="small center">Demo kod: <b style="color:#70c4ff">123456</b></p>
+  </main>
+
+  <main id="login" class="hidden">
+    <button class="back" onclick="show('welcome')">← Orqaga</button><h1>Xush kelibsiz</h1><p class="muted">Shaxsiy kabinetingizga kiring.</p>
+    <div class="field"><label>Telefon yoki elektron pochta</label><input id="loginId" placeholder="+998... yoki email"></div>
+    <div class="field"><label>Parol</label><input type="password" placeholder="Parolingiz"></div>
+    <button class="primary" onclick="show('dashboard');toast('Demo kabinet ochildi.')">Kirish</button>
+    <p class="small center">Demo: istalgan ma’lumot bilan kirish mumkin.</p>
+  </main>
+
+  <main id="dashboard" class="hidden">
+    <div class="row"><div><div class="eyebrow">Shaxsiy kabinet</div><h2 style="margin-top:6px">Assalomu alaykum 👋</h2><div class="muted">Nexora Finance hisobingiz</div></div><div class="logo" style="width:44px;height:44px">N</div></div>
+    <section class="card hero"><div class="row"><span class="muted">Hisob holati</span><span class="status pending">Demo hisob</span></div><h1 style="margin:16px 0 4px">0 so‘m</h1><p class="muted">Bu prototipda haqiqiy pul balansi mavjud emas.</p><button class="primary" onclick="show('loan')">＋ Qarz uchun ariza</button></section>
+    <div class="grid">
+      <div class="stat"><div class="icon">📄</div><strong id="applicationCount">0 ta</strong><span>Mening arizalarim</span></div>
+      <div class="stat"><div class="icon">🗓️</div><strong>—</strong><span>To‘lov jadvali</span></div>
+    </div>
+    <section class="card"><div class="row"><h3>So‘nggi faoliyat</h3><span class="small">Demo</span></div><div id="recentActivity" class="muted">Hozircha faoliyat yo‘q.</div></section>
+    <section class="card"><h3>Hisobingiz xavfsizligi</h3><p class="muted">Tasdiqlash, parolni himoyalash va shaxsiy ma’lumotlarni boshqarish funksiyalari server ulangandan keyin yoqiladi.</p><button class="secondary" onclick="show('profile')">Profil sozlamalari</button></section>
+  </main>
+
+  <main id="loan" class="hidden">
+    <button class="back" onclick="show('dashboard')">← Kabinetga qaytish</button><div class="eyebrow">Yangi ariza</div><h1>Qarz uchun ariza</h1><p class="muted">Bu faqat ariza formasining demo ko‘rinishi. Hozir ariza hech qayerga yuborilmaydi.</p>
+    <div class="field"><label>Kerakli summa</label><div class="grid"><button class="loan-choice" onclick="pickAmount(this,'500 000')">500 000 so‘m</button><button class="loan-choice" onclick="pickAmount(this,'1 000 000')">1 mln so‘m</button><button class="loan-choice" onclick="pickAmount(this,'2 000 000')">2 mln so‘m</button><button class="loan-choice" onclick="pickAmount(this,'5 000 000')">5 mln so‘m</button></div></div>
+    <div class="field"><label>Qarz muddati</label><select id="term"><option>7 kun</option><option>15 kun</option><option>30 kun</option></select></div>
+    <div class="field"><label>Qarz nima uchun kerak?</label><textarea id="purpose" maxlength="500" placeholder="Maqsadingizni qisqacha yozing..."></textarea></div>
+    <div class="notice">Foiz, jami qaytariladigan summa va shartlar haqiqiy xizmat ishga tushishidan oldin qonuniy talablar asosida aniq ko‘rsatilishi shart.</div>
+    <button class="primary" onclick="submitDemoLoan()">Demo arizani ko‘rib chiqish</button>
+  </main>
+
+  <main id="applications" class="hidden">
+    <div class="eyebrow">Arizalar</div><h1>Mening arizalarim</h1><p class="muted">Arizalaringiz va holati shu yerda ko‘rinadi.</p>
+    <section class="card" id="applicationList"><div class="center muted">Hozircha arizalar yo‘q.</div></section>
+  </main>
+
+  <main id="profile" class="hidden">
+    <button class="back" onclick="show('dashboard')">← Kabinetga qaytish</button><div class="eyebrow">Sozlamalar</div><h1>Profil va xavfsizlik</h1>
+    <section class="card"><div class="row"><div class="itemicon">👤</div><div style="flex:1"><h3>Shaxsiy profil</h3><div class="muted">Demo foydalanuvchi</div></div><span class="status pending">Tekshirilmagan</span></div><div class="divider"></div><div class="item"><div class="itemicon">🔐</div><div class="itembody"><strong>Kirish xavfsizligi</strong><small>Bir martalik kod va parol himoyasi</small></div></div><div class="item"><div class="itemicon">🔔</div><div class="itembody"><strong>Bildirishnomalar</strong><small>Ariza holati va muhim xabarlar</small></div></div></section>
+    <button class="secondary" onclick="show('welcome')">Chiqish</button>
+  </main>
+
+  <main id="admin" class="hidden">
+    <div class="eyebrow">Faqat namoyish uchun</div><h1>Admin paneli</h1><p class="muted">Bu ochiq demo paneli — haqiqiy admin himoyasi yo‘q. Uni real foydalanuvchilar yoki moliyaviy qarorlar uchun ishlatmang.</p>
+    <section class="grid"><div class="stat"><span>Jami arizalar</span><strong id="adminCount">0</strong></div><div class="stat"><span>Kutilmoqda</span><strong id="pendingCount">0</strong></div></section>
+    <section class="card"><div class="row"><h3>Demo arizalar</h3><span class="pill">TEST</span></div><div id="adminList" class="muted">Arizalar yo‘q.</div></section>
+    <div class="notice">Haqiqiy admin paneli alohida serverda autentifikatsiya, rollar, audit jurnali va himoyalangan ma’lumotlar bazasi bilan qurilishi kerak.</div>
+  </main>
+</div>
+
+<div id="bottom" class="bottom hidden"><nav class="nav">
+<button class="active" data-screen="dashboard" onclick="navTo(this)"><b>⌂</b>Asosiy</button>
+<button data-screen="applications" onclick="navTo(this)"><b>▤</b>Arizalar</button>
+<button data-screen="loan" onclick="navTo(this)"><b>＋</b>Ariza berish</button>
+<button data-screen="profile" onclick="navTo(this)"><b>○</b>Profil</button>
+</nav></div>
+<div id="toast" class="toast hidden"></div>
+<script>
+let chosenAmount = "1 000 000", apps = [];
+const screens = ["welcome","register","verify","login","dashboard","loan","applications","profile","admin"];
+function show(id){
+  screens.forEach(s=>document.getElementById(s).classList.toggle("hidden",s!==id));
+  document.getElementById("bottom").classList.toggle("hidden",!["dashboard","loan","applications","profile"].includes(id));
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===id));
+  if(id==="applications") renderApps();
+  if(id==="admin") renderAdmin();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.remove("hidden");setTimeout(()=>t.classList.add("hidden"),3000)}
+document.getElementById("regForm").addEventListener("submit",e=>{e.preventDefault();show("verify")});
+function verifyDemo(){if(document.getElementById("demoCode").value==="123456"){show("dashboard");toast("Demo akkaunt faollashtirildi.");}else toast("Demo kod noto‘g‘ri. 123456 kiriting.");}
+function pickAmount(el,amount){chosenAmount=amount;document.querySelectorAll(".loan-choice").forEach(b=>b.classList.remove("selected"));el.classList.add("selected")}
+function submitDemoLoan(){
+  const purpose=document.getElementById("purpose").value.trim();
+  if(!purpose){toast("Iltimos, demo maqsadini kiriting.");return}
+  apps.unshift({id:"NF-"+String(Date.now()).slice(-6),amount:chosenAmount,term:document.getElementById("term").value,purpose,status:"Demo — yuborilmagan",date:new Date().toLocaleDateString("uz-UZ")});
+  document.getElementById("applicationCount").textContent=apps.length+" ta";
+  document.getElementById("recentActivity").textContent="Oxirgi demo ariza: "+chosenAmount+" so‘m";
+  document.getElementById("purpose").value="";
+  show("applications");toast("Demo ariza yaratildi. Serverga yuborilmadi.");
+}
+function renderApps(){
+ const el=document.getElementById("applicationList");
+ if(!apps.length){el.innerHTML='<div class="center muted">Hozircha arizalar yo‘q.</div>';return}
+ el.innerHTML=apps.map(a=>`<div class="item"><div class="itemicon">📄</div><div class="itembody"><strong>${a.amount} so‘m</strong><small>${a.id} · ${a.term} · ${a.date}<br>${escapeHtml(a.purpose)}</small><div style="margin-top:8px"><span class="status pending">${a.status}</span></div></div></div>`).join("");
+}
+function renderAdmin(){
+ document.getElementById("adminCount").textContent=apps.length;
+ document.getElementById("pendingCount").textContent=apps.length;
+ const el=document.getElementById("adminList");
+ el.innerHTML=apps.length?apps.map(a=>`<div class="item"><div class="itemicon">📄</div><div class="itembody"><strong>${a.amount} so‘m · ${a.term}</strong><small>${a.id}<br>${escapeHtml(a.purpose)}</small></div><span class="status pending">Demo</span></div>`).join(""):"Arizalar yo‘q.";
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function navTo(btn){show(btn.dataset.screen)}
+// Demo navigation shortcut: append #admin to URL to preview the admin screen.
+if(location.hash==="#admin")show("admin");
+</script>
+</body>
+</html>
